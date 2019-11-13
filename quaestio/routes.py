@@ -5,5 +5,5 @@ router = routers.DefaultRouter()
 router.register(r"forms", FormViewset)
 router.register(r"questions", QuestionViewSet)
 router.register(r"options", OptionViewSet)
-router.register(r"options", AnswerViewSet)
+router.register(r"answers", AnswerViewSet)
 
