@@ -1,10 +1,8 @@
 from rest_framework import viewsets
 from ..models import Form
-from survey.serializers import FormSerializer
+from ..serializers import FormSerializer
 
-class FormView(viewsets.ModelViewSet):
+class FormViewset(viewsets.ModelViewSet):
     lookup_fields = "id"
+    queryset = Form.objects.all()
     serializer_class = FormSerializer
-
-    def get_queryset(self):
-        return Form.objects.all()
