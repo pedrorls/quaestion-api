@@ -12,4 +12,6 @@ class FormViewset(viewsets.ModelViewSet):
     permission_classes = [IsCreator]
 
     def get_queryset(self):
-        return Form.objects.filter(creator=self.request.user.id)
+        username = self.request.query_params.get("username", None)
+        if username is not None:
+            return Form.objects.filter(creator__username=username)
