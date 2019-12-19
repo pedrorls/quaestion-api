@@ -12,6 +12,7 @@ django = "*"
 djangorestframework = "*"
 werkzeug = "*"
 model-mommy = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"

@@ -39,7 +39,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRTY_PARTY_APPS = ["rest_framework", "django_extensions"]
+THIRTY_PARTY_APPS = ["rest_framework", "django_extensions", "django_filters"]
 
 LOCAL_APPS = ["survey"]
 
@@ -126,4 +126,5 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
     ),
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }

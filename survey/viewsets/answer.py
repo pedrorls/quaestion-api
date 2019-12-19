@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 from ..models import Answer
 from ..serializers import AnswerSerializer
 
@@ -7,8 +8,11 @@ class AnswerViewSet(viewsets.ModelViewSet):
 
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
-
-    def get_queryset(self):
-        username = self.request.query_params.get("username", None)
-        if username is not None:
-            return Answer.objects.filter(creator__username=username)
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        "creator__username",
+        "question__id",
+        "form__id",
+    ]
