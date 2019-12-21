@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 from .question import Question
 from .option import Option
 from .form import Form
+from user.models import User
 
 
 class Answer(models.Model):

@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True)
     key = models.CharField(max_length=50, default=uuid.uuid4(), unique=True)
 
     def __str__(self):
@@ -12,4 +12,5 @@ class User(models.Model):
     class Meta:
         verbose_name = "User"
         verbose_name_plural = "Users"
+        unique_together = ("username", "key")
 
