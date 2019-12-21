@@ -41,7 +41,7 @@ DJANGO_APPS = [
 
 THIRTY_PARTY_APPS = ["rest_framework", "django_extensions", "django_filters"]
 
-LOCAL_APPS = ["survey"]
+LOCAL_APPS = ["survey", "user"]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRTY_PARTY_APPS
 
