@@ -15,8 +15,7 @@ class FormSerializer(serializers.ModelSerializer):
     def validate(self, data):
         request = self.context.get("request")
         code = request.query_params.get("creator__key")
-
         if code is None:
-            return serializers.ValidationError("Request should have the user key")
+            return serializers.ValidationError("Request must have the user key")
 
         return data
