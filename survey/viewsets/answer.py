@@ -12,7 +12,7 @@ class AnswerViewSet(viewsets.ModelViewSet):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        "creator__code",
+        "creator__key",
         "question__id",
         "form__id",
     ]
