@@ -11,4 +11,11 @@ class FormViewset(viewsets.ModelViewSet):
     filter_backends = [
         DjangoFilterBackend,
     ]
-    filterset_fields = ["creator__username"]
+    filterset_fields = ["creator__key"]
+
+    def get_queryset(self):
+        code = self.request.query_params.get("creator__key", None)
+
+        if code is not None:
+            return self.queryset.filter(creator__key=code)
+

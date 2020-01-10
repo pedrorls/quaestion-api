@@ -8,7 +8,8 @@ class QuestionViewSet(viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
 
     def get_queryset(self):
-        username = self.request.query_params.get("username", None)
-        if username is not None:
-            forms = Form.objects.filter(creator__username=username)
+        key = self.request.query_params.get("creator__key", None)
+        form = self.request.query_params.get("form__id", None)
+        if key and form:
+            forms = Form.objects.filter(creator__key=key)
             return Question.objects.filter(form__in=forms)

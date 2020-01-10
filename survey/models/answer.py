@@ -15,3 +15,4 @@ class Answer(models.Model):
     class Meta:
         verbose_name = "Answer"
         verbose_name_plural = "Answers"
+        unique_together = ("form", "question", "option")
