@@ -1,4 +1,4 @@
 {
     "python.formatting.provider": "black",
-    "python.pythonPath": "/home/mindsight/.pyenv/versions/3.7.3/bin/python"
+    "python.pythonPath": "/home/pedro/.virtualenvs/quaestio-SZ9BGDt3/bin/python"
 }
