@@ -9,14 +9,11 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         request = self.context.get("request")
-        code = request.query_params.get("creator__key", None)
+        code = request.query_params.get("code", None)
 
         question = Question.objects.get(id=data["question"].id)
         option = Option.objects.get(id=data["option"].id)
         form = Form.objects.get(id=question.form.id)
-
-        if code is None:
-            return serializers.ValidationError("Request must have the user key")
 
         if form.id != data["form"].id:
             raise serializers.ValidationError(
