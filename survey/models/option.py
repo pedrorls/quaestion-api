@@ -3,7 +3,20 @@ from .question import Question
 
 
 class Option(models.Model):
-    description = models.CharField(max_length=150)
+    VERY_BAD = "Very bad"
+    BAD = "Bad"
+    NEUTRAL = "Neutral"
+    GOOD = "Good"
+    VERY_GOOD = "Very good"
+
+    CHOICES = [
+        (VERY_BAD, VERY_BAD),
+        (BAD, BAD),
+        (NEUTRAL, NEUTRAL),
+        (GOOD, GOOD),
+        (VERY_GOOD, VERY_GOOD)
+    ]
+    description = models.CharField(max_length=15, choices=CHOICES, default=NEUTRAL)
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name="question"
     )
