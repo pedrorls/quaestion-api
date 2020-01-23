@@ -7,5 +7,9 @@ class IsCreator(permissions.BasePermission):
     Assumes the model instance has an `owner` attribute.
     """
 
-    def has_object_permission(self, request, view, obj):
-        return obj.creator == request.user
+    def has_permission(self, request, view):
+        code = request.query_params.get("code", None)
+        print(code)
+        if code is not None:
+            return True
+        return False
