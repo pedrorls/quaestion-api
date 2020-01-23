@@ -1,5 +1,5 @@
 from rest_framework import permissions
-
+from user.models import User
 
 class IsUserCodeSupplied(permissions.BasePermission):
     """
@@ -9,7 +9,10 @@ class IsUserCodeSupplied(permissions.BasePermission):
 
     def has_permission(self, request, view):
         code = request.query_params.get("code", None)
-        print(code)
-        if code is not None:
+        try:
+            user = User.objects.get(key=code)
             return True
-        return False
+        except:
+            return False
+
+        
