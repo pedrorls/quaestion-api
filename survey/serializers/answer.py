@@ -8,9 +8,6 @@ class AnswerSerializer(serializers.ModelSerializer):
         fields = ["id", "creator", "form", "question", "option"]
 
     def validate(self, data):
-        request = self.context.get("request")
-        code = request.query_params.get("code", None)
-
         question = Question.objects.get(id=data["question"].id)
         option = Option.objects.get(id=data["option"].id)
         form = Form.objects.get(id=question.form.id)
