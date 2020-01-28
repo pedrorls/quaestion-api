@@ -9,6 +9,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = "Question"
         verbose_name_plural = "Questions"
+        unique_together = ("description", "form")
 
     def __str__(self):
         return self.description

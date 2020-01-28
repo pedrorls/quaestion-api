@@ -24,6 +24,7 @@ class Option(models.Model):
     class Meta:
         verbose_name = "Option"
         verbose_name_plural = "Options"
+        unique_together = ("description", "question")
 
     def __str__(self):
         return self.description
