@@ -27,4 +27,6 @@ class BelongsToCreatorOrForm(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         code = request.query_params.get("code")
         form_id = request.query_params.get("form_id")
-        return queryset.filter(Q(creator__key=code)|Q(form__id=form_id))
+        if form_id:
+            return queryset.filter(form__id=form_id) 
+        return queryset.filter(creator__key=code)
