@@ -7,7 +7,7 @@ from ..filterset import BelongsToForm
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
+    queryset = Question.objects.all().prefetch_related("form", "question", "creator")
     serializer_class = QuestionSerializer
     permission_classes = (IsUserCodeSupplied,)
     filter_backends = (DjangoFilterBackend, BelongsToForm)
