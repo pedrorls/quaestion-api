@@ -9,5 +9,4 @@ class FormSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "description",
-            "creator",
         ]
