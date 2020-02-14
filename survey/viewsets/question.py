@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from ..serializers import QuestionSerializer
 from ..models import Question, Form
@@ -7,8 +8,7 @@ from ..filterset import BelongsToForm
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all().prefetch_related("form", "question", "creator")
+    queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_classes = (IsUserCodeSupplied,)
-    filter_backends = (DjangoFilterBackend, BelongsToForm)
-    filter_fields = ("form__id",)
+    filter_fields = ("form",)

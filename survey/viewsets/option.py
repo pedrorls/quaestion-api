@@ -11,5 +11,4 @@ class OptionViewSet(viewsets.ModelViewSet):
     queryset = Option.objects.all()
     serializer_class = OptionSerializer
     permission_classes = (IsUserCodeSupplied,)
-    filter_backends = (DjangoFilterBackend, BelongsToQuestion)
-    filter_fields = ("question__id",)
+    filter_fields = ("question",)

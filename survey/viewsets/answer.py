@@ -7,14 +7,14 @@ from ..filterset import BelongsToCreatorOrForm
 
 class AnswerViewSet(viewsets.ModelViewSet):
 
-    queryset = Answer.objects.all()
+    queryset = Answer.objects.all().prefetch_related("form", "question", "creator")
     serializer_class = AnswerSerializer
     permission_classes = (IsUserCodeSupplied,)
     filter_backends = (
         DjangoFilterBackend, BelongsToCreatorOrForm
     )
-    filterset_fields = [
+    filterset_fields = (
         "creator__key",
-        "form__id",
-    ]
+        "form",
+    )
 
